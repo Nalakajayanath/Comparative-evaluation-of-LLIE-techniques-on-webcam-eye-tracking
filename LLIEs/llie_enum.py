@@ -8,3 +8,4 @@ class LLIEMethod(Enum):
     MSR = "msr"
     ZERODCE = "zerodce"
     ENLIGHTENGAN = "enlightengan"
+    MIRNET = "mirnet"

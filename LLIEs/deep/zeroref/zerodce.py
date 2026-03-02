@@ -10,7 +10,7 @@ sys.path.append("Zero-DCE/Zero-DCE_code")
 from model import enhance_net_nopool
 
 class ZeroDCE:
-    def __init__(self, weights_path=os.path.join(os.path.dirname(__file__), "../../", "models", "zerodce", "Epoch99.pth")):
+    def __init__(self, weights_path=os.path.join(os.path.dirname(__file__), "../../../", "models", "zerodce", "Epoch99.pth")):
 
         self.device = torch.device("cpu")
 

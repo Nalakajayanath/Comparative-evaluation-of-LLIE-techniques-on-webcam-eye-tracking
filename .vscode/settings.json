@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./Zero-DCE/Zero-DCE_code"
+        "./Zero-DCE/Zero-DCE_code",
+        "./MIRNet"
     ]
 }

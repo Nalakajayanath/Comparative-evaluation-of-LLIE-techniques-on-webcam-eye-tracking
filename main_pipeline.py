@@ -116,4 +116,5 @@ if __name__ == "__main__":
     # evaluate_dataset(LOW_LIGHT_ROOT, LLIEMethod.SSR, max_samples=100)
     # evaluate_dataset(LOW_LIGHT_ROOT, LLIEMethod.MSR, max_samples=100)
     # evaluate_dataset(LOW_LIGHT_ROOT, LLIEMethod.ZERODCE, max_samples=100)
-    evaluate_dataset(LOW_LIGHT_ROOT, LLIEMethod.ENLIGHTENGAN, max_samples=100)
+    #evaluate_dataset(LOW_LIGHT_ROOT, LLIEMethod.ENLIGHTENGAN, max_samples=100)
+    evaluate_dataset(LOW_LIGHT_ROOT, LLIEMethod.MIRNET, max_samples=100)
