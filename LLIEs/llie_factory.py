@@ -4,6 +4,7 @@ from LLIEs.classical.he import histogram_equalization
 from LLIEs.classical.clahe import clahe_enhancement
 from LLIEs.Retinex_based.msr import multi_scale_retinex
 from LLIEs.Retinex_based.ssr import single_scale_retinex
+from LLIEs.classical.msrcr import msrcr
 from LLIEs.deep.GAN_Based.enlightengan import EnlightenGAN
 from LLIEs.deep.zeroref.zerodce import ZeroDCE
 from LLIEs.deep.supervised.mirnet import MIRNet
@@ -25,6 +26,9 @@ def apply_llie(image, method: LLIEMethod):
     
     elif method == LLIEMethod.MSR:
         return multi_scale_retinex(image)
+    
+    elif method == LLIEMethod.MSRCR:
+        return msrcr(image)
     
     elif method == LLIEMethod.ZERODCE:
         if not hasattr(apply_llie, "zerodce_model"):
