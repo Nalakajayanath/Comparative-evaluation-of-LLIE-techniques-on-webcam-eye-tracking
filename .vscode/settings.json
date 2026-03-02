@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Zero-DCE/Zero-DCE_code"
+    ]
+}

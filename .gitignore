@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env/
+
+# Dataset
+data/original/
+data/low_light_simulated/
+data/MPIIGaze_Normalized_Images
+
+# Model weights
+models/*.pth
+models/*.pkl
+models
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
