@@ -12,6 +12,7 @@ venv/
 data/original/
 data/low_light_simulated/
 data/MPIIGaze_Normalized_Images
+data/MPIIFaceGaze_LowLight_Simulated
 
 # Model weights
 models/*.pth
