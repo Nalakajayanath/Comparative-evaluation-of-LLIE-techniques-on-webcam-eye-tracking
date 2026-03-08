@@ -6,6 +6,7 @@ torch
 torchvision
 pillow
 scikit-learn
+git clone https://github.com/Ahmednull/L2CS-Net.git
 git clone https://github.com/Li-Chongyi/Zero-DCE.git
 git clone https://github.com/arsenyinfo/EnlightenGAN-inference
 git clone https://github.com/swz30/MIRNet.git
