@@ -17,19 +17,24 @@ OUTPUT_ROOT = os.path.normpath(
     "data/low_light_simulated"
 )
 
-# Output folders
+
 MODES = {
-    # "low_i": lambda img: simulate_low_intensity(img, reduction=70),
-    # "low_g": lambda img: simulate_gamma_dark(img, gamma=0.3),
-    # "low_left": lambda img: simulate_directional_dark(img, "left"),
-    # "low_right": lambda img: simulate_directional_dark(img, "right"),
-        "low_i_g_left": lambda img: simulate_directional_dark(
+    "low_i": lambda img: simulate_low_intensity(img, reduction=70),
+
+    "low_g": lambda img: simulate_gamma_dark(img, gamma=0.3),
+
+    "low_left": lambda img: simulate_directional_dark(img, "left"),
+
+    "low_right": lambda img: simulate_directional_dark(img, "right"),
+
+    "low_i_g_left": lambda img: simulate_directional_dark(
         simulate_gamma_dark(
             simulate_low_intensity(img, reduction=70),
             gamma=0.3
         ),
         "left"
     ),
+
     "low_i_g_right": lambda img: simulate_directional_dark(
         simulate_gamma_dark(
             simulate_low_intensity(img, reduction=70),

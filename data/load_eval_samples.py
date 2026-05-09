@@ -58,9 +58,12 @@ def load_evaluation_samples():
 
                 except:
                     continue
+                
+                frame_file = image_rel.split("/")[1]
+                new_filename = f"{eye}_{frame_file}"
 
                 full_rel_path = os.path.normpath(
-                    os.path.join(subject_id, image_rel)
+                    os.path.join(subject_id, day, new_filename)
                 )
 
                 samples.append({

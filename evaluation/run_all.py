@@ -13,7 +13,7 @@ from evaluation.evaluator import run_single_eval
 
 DATA_ROOT = "data"
 
-def run_all(max_samples=300):
+def run_all(max_samples=1000):
 
     os.makedirs("results", exist_ok=True)
 

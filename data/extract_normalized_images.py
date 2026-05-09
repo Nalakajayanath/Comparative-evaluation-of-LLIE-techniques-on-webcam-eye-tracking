@@ -43,7 +43,7 @@ def extract_normalized_images():
                         
                         # Format: p00/day01/left_0001.jpg
                         # (Padding with zeros to match your extract_frame_index logic)
-                        filename = f"{frame_index + 1:04d}.jpg" 
+                        filename = f"{eye}_{frame_index + 1:04d}.jpg"
                         save_path = os.path.join(out_day_path, filename)
                         
                         cv2.imwrite(save_path, img_array)
