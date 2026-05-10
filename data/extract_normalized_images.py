@@ -37,12 +37,9 @@ def extract_normalized_images():
                 try:
                     images = mat['data'][0][0][eye][0][0]['image']
                     
-                    # Save each frame as a .jpg
                     for frame_index in range(images.shape[0]):
                         img_array = images[frame_index]
                         
-                        # Format: p00/day01/left_0001.jpg
-                        # (Padding with zeros to match your extract_frame_index logic)
                         filename = f"{eye}_{frame_index + 1:04d}.jpg"
                         save_path = os.path.join(out_day_path, filename)
                         
