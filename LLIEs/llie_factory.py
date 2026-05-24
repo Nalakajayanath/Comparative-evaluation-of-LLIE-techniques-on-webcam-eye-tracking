@@ -1,5 +1,3 @@
-from email.mime import image
-
 from LLIEs.classical.he import histogram_equalization
 from LLIEs.classical.clahe import clahe_enhancement
 from LLIEs.Retinex_based.msr import multi_scale_retinex
