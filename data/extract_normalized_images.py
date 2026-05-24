@@ -40,6 +40,7 @@ def extract_normalized_images():
                     for frame_index in range(images.shape[0]):
                         img_array = images[frame_index]
                         
+                        # Format: p00/day01/left_0001.jpg (separate file per eye)
                         filename = f"{eye}_{frame_index + 1:04d}.jpg"
                         save_path = os.path.join(out_day_path, filename)
                         

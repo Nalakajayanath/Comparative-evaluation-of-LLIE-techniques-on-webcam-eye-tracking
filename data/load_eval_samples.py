@@ -1,6 +1,14 @@
 import os
+import sys
 import scipy.io as sio
 import numpy as np
+
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_PROJECT_ROOT = os.path.dirname(_SCRIPT_DIR)
+if _PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, _PROJECT_ROOT)
+
+from data.sample_paths import build_eye_image_rel_path
 
 EVAL_ROOT = os.path.normpath(
     "data/original/MPIIGaze/Evaluation Subset/sample list for eye image"
@@ -9,6 +17,7 @@ EVAL_ROOT = os.path.normpath(
 MAT_ROOT = os.path.normpath(
     "data/original/MPIIGaze/Data/Normalized"
 )
+
 
 def load_evaluation_samples():
 
@@ -47,30 +56,27 @@ def load_evaluation_samples():
                 mat = mat_cache[mat_path]
 
                 try:
-                    gaze_3d = mat['data'][0][0][eye][0][0]['gaze'][frame_idx]
+                    gaze_3d = mat["data"][0][0][eye][0][0]["gaze"][frame_idx]
                     x, y, z = gaze_3d
+                    gaze_vector = np.array([x, y, z], dtype=np.float64)
 
-                    pitch = np.arcsin(-y)
-                    yaw = np.arctan2(-x, -z)
+                    pitch = np.rad2deg(np.arcsin(-y))
+                    yaw = np.rad2deg(np.arctan2(-x, -z))
 
-                    yaw = np.rad2deg(yaw)
-                    pitch = np.rad2deg(pitch)
-
-                except:
+                except (KeyError, IndexError, ValueError):
                     continue
-                
-                frame_file = image_rel.split("/")[1]
-                new_filename = f"{eye}_{frame_file}"
 
+                eye_image_rel = build_eye_image_rel_path(image_rel, eye)
                 full_rel_path = os.path.normpath(
-                    os.path.join(subject_id, day, new_filename)
+                    os.path.join(subject_id, eye_image_rel)
                 )
 
                 samples.append({
                     "path": full_rel_path,
                     "eye": eye,
                     "yaw": yaw,
-                    "pitch": pitch
+                    "pitch": pitch,
+                    "gaze": gaze_vector,
                 })
 
     return samples
