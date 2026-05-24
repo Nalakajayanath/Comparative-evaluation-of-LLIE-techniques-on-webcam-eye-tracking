@@ -14,7 +14,7 @@ PROJECT_ROOT = os.path.abspath(
     os.path.join(CURRENT_DIR, "../../../")
 )
 
-MIRNET_ROOT = os.path.join(PROJECT_ROOT, "MIRNet")
+MIRNET_ROOT = os.path.join(PROJECT_ROOT, "vendor", "MIRNet")
 
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)

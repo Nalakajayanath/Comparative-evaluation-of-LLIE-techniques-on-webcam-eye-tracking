@@ -50,28 +50,14 @@ def simulate_directional_dark(image, direction="left", strength=0.2): # strength
 
 
 if __name__ == "__main__":
-    import matplotlib.pyplot as plt
     import os
+    import sys
 
-    test_image_path = "data/original/MPIIGaze/Data/Original/p00/day01/0001.jpg"
+    _root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if _root not in sys.path:
+        sys.path.insert(0, _root)
+    os.chdir(_root)
 
-    image = cv2.imread(test_image_path)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    from data.generate_low_light_dataset import main
 
-    low_i = simulate_low_intensity(image)
-    low_g = simulate_gamma_dark(image)
-    low_left = simulate_directional_dark(image, "left")
-    low_right = simulate_directional_dark(image, "right")
-
-    titles = ["Original", "Low Intensity", "Gamma Dark", "Left Light", "Right Light"]
-    images = [image, low_i, low_g, low_left, low_right]
-
-    plt.figure(figsize=(12, 4))
-    for i in range(5):
-        plt.subplot(1, 5, i + 1)
-        plt.imshow(images[i])
-        plt.title(titles[i])
-        plt.axis("off")
-
-    plt.tight_layout()
-    plt.show()
+    main()

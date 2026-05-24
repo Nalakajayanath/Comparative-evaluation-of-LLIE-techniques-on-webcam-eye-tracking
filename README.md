@@ -1,40 +1,30 @@
-# Comparative Evaluation of Low-Light Image Enhancement Techniques for Webcam-Based Gaze Tracking
+# Comparative Evaluation of LLIE Techniques for Webcam-Based Gaze Tracking
 
-## Project Overview
-This research evaluates how different Low-Light Image Enhancement (LLIE) techniques affect the accuracy and real-time feasibility of webcam-based gaze estimation.
+## Run order (four commands)
 
-The study integrates LLIE methods as preprocessing modules before a pre-trained L2CS gaze estimation model.
+From the **project root**, after placing MPIIGaze in `data/original/MPIIGaze/`:
 
-## Research Questions
-RQ1: Which LLIE techniques most effectively improve gaze accuracy?
-RQ2: Which LLIE techniques offer the best trade-off between accuracy and computational efficiency?
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
 
-## Architecture
+python scripts/setup_environment.py
+python data/extract_normalized_images.py
+python data/simulate_low_light.py
+python evaluation/run_all.py
+```
 
-Low-Light Image
-        ↓
-LLIE Module
-        ↓
-L2CS Gaze Estimator (Black Box)
-        ↓
-Angular Error Evaluation
+| Step | Script | What it does |
+|------|--------|----------------|
+| 1 | `scripts/setup_environment.py` | pip install, clone `vendor/`, licenses, **download gaze weights** |
+| 2 | `data/extract_normalized_images.py` | `.mat` → `left_0001.jpg` / `right_0001.jpg` |
+| 3 | `data/simulate_low_light.py` | Build `data/low_light_simulated/` |
+| 4 | `evaluation/run_all.py` | LLIE + gaze eval → `results/results.csv` |
 
-## Implemented LLIE Techniques
+Optional plots: `python evaluation/generate_summary.py`, `plot_mean_error.py`, …
 
-- Histogram Equalization
-- CLAHE
-- SSR
-- MSR
-- Zero-DCE
-- MIRNet
+## Details
 
-## Evaluation Metrics
-
-- Angular Error (degrees)
-- FPS
-- Enhancement latency
-
-## Setup
-
-```bash
-pip install -r requirements.txt
+- **pip:** `requirements.txt`
+- **git clones + licenses:** `scripts/setup_environment.py` → `THIRD_PARTY_NOTICES.md`
+- **Gaze model:** [pytorch_mpiigaze](https://github.com/hysts/pytorch_mpiigaze) (eye patches)

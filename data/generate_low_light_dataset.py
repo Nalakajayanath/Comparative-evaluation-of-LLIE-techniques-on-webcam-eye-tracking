@@ -1,10 +1,17 @@
 import os
+import sys
 import cv2
-from load_eval_samples import load_evaluation_samples
-from simulate_low_light import (
+
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_PROJECT_ROOT = os.path.dirname(_SCRIPT_DIR)
+if _PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, _PROJECT_ROOT)
+
+from data.load_eval_samples import load_evaluation_samples
+from data.simulate_low_light import (
     simulate_low_intensity,
     simulate_gamma_dark,
-    simulate_directional_dark
+    simulate_directional_dark,
 )
 
 DATASET_ROOT = os.path.normpath(

@@ -13,10 +13,14 @@ data/original/
 data/low_light_simulated/
 data/MPIIGaze_Normalized_Images
 
+# Vendor clones (scripts/setup_environment.py)
+vendor/*
+!vendor/.gitkeep
+
 # Model weights
-models/*.pth
-models/*.pkl
-models
+models/**/*.pth
+models/**/*.pkl
+!models/**/.gitkeep
 
 # Jupyter
 .ipynb_checkpoints/
