@@ -1,8 +1,8 @@
 """
 MPIIGaze eye-patch gaze estimator (ResNet-preact, hysts/pytorch_mpiigaze weights).
 
-Weights: scripts/download_pretrained_gaze_weights.py
-  -> models/mpiigaze/resnet_preact/foldXX/checkpoint_0040.pth
+Uses inlined model (mpiigaze_resnet.py) to avoid NumPy 2.x / vendor demo import issues.
+Weights: scripts/setup_environment.py -> models/mpiigaze/resnet_preact/foldXX/
 """
 
 import os
