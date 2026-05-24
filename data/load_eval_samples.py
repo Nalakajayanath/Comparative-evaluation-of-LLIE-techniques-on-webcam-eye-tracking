@@ -9,6 +9,7 @@ if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
 
 from data.sample_paths import build_eye_image_rel_path
+from data.gaze_pose import pose_for_eye
 
 EVAL_ROOT = os.path.normpath(
     "data/original/MPIIGaze/Evaluation Subset/sample list for eye image"
@@ -56,9 +57,12 @@ def load_evaluation_samples():
                 mat = mat_cache[mat_path]
 
                 try:
-                    gaze_3d = mat["data"][0][0][eye][0][0]["gaze"][frame_idx]
+                    eye_data = mat["data"][0][0][eye][0][0]
+                    gaze_3d = eye_data["gaze"][frame_idx]
+                    pose_raw = eye_data["pose"][frame_idx]
                     x, y, z = gaze_3d
                     gaze_vector = np.array([x, y, z], dtype=np.float64)
+                    pose_rad = pose_for_eye(pose_raw, eye)
 
                     pitch = np.rad2deg(np.arcsin(-y))
                     yaw = np.rad2deg(np.arctan2(-x, -z))
@@ -77,6 +81,7 @@ def load_evaluation_samples():
                     "yaw": yaw,
                     "pitch": pitch,
                     "gaze": gaze_vector,
+                    "pose": pose_rad,
                 })
 
     return samples

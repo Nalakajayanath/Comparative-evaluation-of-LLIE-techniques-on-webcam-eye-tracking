@@ -4,8 +4,12 @@ import numpy as np
 import sys
 import os
 
-# Add Zero-DCE path
-sys.path.append("Zero-DCE/Zero-DCE_code")
+_PROJECT_ROOT = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "..", "..")
+)
+_ZERODCE_CODE = os.path.join(_PROJECT_ROOT, "vendor", "Zero-DCE", "Zero-DCE_code")
+if _ZERODCE_CODE not in sys.path:
+    sys.path.insert(0, _ZERODCE_CODE)
 
 from model import enhance_net_nopool
 

@@ -53,4 +53,10 @@ def extract_normalized_images():
         print(f"Finished extracting images for {subject}")
 
 if __name__ == "__main__":
+    import sys
+
+    _root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    os.chdir(_root)
+    if _root not in sys.path:
+        sys.path.insert(0, _root)
     extract_normalized_images()

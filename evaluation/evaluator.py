@@ -4,18 +4,21 @@ import numpy as np
 import cv2
 
 from data.load_eval_samples import load_evaluation_samples
-from gaze_model.l2cs_blackbox import L2CSBlackBox
+from gaze_model.mpiigaze_predictor import MPIIGazePredictor
 from evaluation.angular_error import angular_error_vectors
 from LLIEs.llie_factory import apply_llie
 
 DATA_ROOT = "data"
 
+
 def load_image(root, rel_path):
     return cv2.imread(os.path.join(root, rel_path))
+
 
 def extract_subject(sample):
     parts = os.path.normpath(sample["path"]).split(os.sep)
     return parts[-3]
+
 
 def run_single_eval(root, method, params, max_samples):
 
@@ -29,7 +32,7 @@ def run_single_eval(root, method, params, max_samples):
 
     for i, sample in enumerate(samples):
 
-        if i >= max_samples:
+        if max_samples is not None and i >= max_samples:
             break
 
         image = load_image(root, sample["path"])
@@ -39,14 +42,18 @@ def run_single_eval(root, method, params, max_samples):
         subject = extract_subject(sample)
 
         if subject != current_subject:
-            predictor = L2CSBlackBox(subject)
+            predictor = MPIIGazePredictor(subject)
             current_subject = subject
 
         start = time.perf_counter()
 
         enhanced = apply_llie(image, method, params)
 
-        yaw_pred, pitch_pred = predictor.predict(enhanced)
+        yaw_pred, pitch_pred = predictor.predict(
+            enhanced,
+            sample["pose"],
+            eye=sample["eye"],
+        )
 
         end = time.perf_counter()
 
