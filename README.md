@@ -27,4 +27,4 @@ Optional plots: `python evaluation/generate_summary.py`, `plot_mean_error.py`, â
 
 - **pip:** `requirements.txt`
 - **git clones + licenses:** `scripts/setup_environment.py` â†’ `THIRD_PARTY_NOTICES.md`
-- **Gaze model:** [pytorch_mpiigaze](https://github.com/hysts/pytorch_mpiigaze) (eye patches)
+- **Gaze model:** inlined ResNet-preact (`gaze_model/`), weights from [ptgaze release](https://github.com/hysts/pytorch_mpiigaze_demo)

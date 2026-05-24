@@ -1,11 +1,3 @@
-# Python packages (installed by scripts/setup_environment.py)
-#
-# Full pipeline — project root:
-#   python scripts/setup_environment.py
-#   python data/extract_normalized_images.py
-#   python data/simulate_low_light.py
-#   python evaluation/run_all.py
-
 opencv-python
 numpy
 scipy
@@ -15,16 +7,5 @@ torchvision
 pillow
 scikit-learn
 pandas
-
-# MPIIGaze gaze model (hysts/pytorch_mpiigaze)
-h5py
-yacs
-pyyaml
-tqdm
-tensorboardX
-termcolor
-fvcore
-
-# EnlightenGAN inference (LLIE in run_all)
 onnxruntime
 enlighten-inference
