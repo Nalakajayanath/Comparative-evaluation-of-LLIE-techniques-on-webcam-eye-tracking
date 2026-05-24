@@ -5,7 +5,7 @@ import cv2
 
 from data.load_eval_samples import load_evaluation_samples
 from gaze_model.mpiigaze_predictor import MPIIGazePredictor
-from evaluation.angular_error import angular_error_vectors
+from evaluation.angular_error import angular_error
 from LLIEs.llie_factory import apply_llie
 
 DATA_ROOT = "data"
@@ -57,7 +57,7 @@ def run_single_eval(root, method, params, max_samples):
 
         end = time.perf_counter()
 
-        err = angular_error_vectors(sample["gaze"], yaw_pred, pitch_pred)
+        err = angular_error(sample["gaze"], yaw_pred, pitch_pred)
 
         errors.append(err)
         times.append((end - start) * 1000)
