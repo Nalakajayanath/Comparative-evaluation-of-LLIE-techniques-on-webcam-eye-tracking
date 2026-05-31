@@ -138,19 +138,6 @@ IMPLEMENTATION/
 
 ---
 
-## Citation
-
-```bibtex
-@mastersthesis{jayanath2026llie,
-  author = {Nalaka Jayanath},
-  title = {Comparative Evaluation of Low-Light Image Enhancement Techniques to Improve Webcam-Based Eye Tracking},
-  school = {University of Westminster},
-  year = {2026}
-}
-```
-
----
-
 ## Acknowledgements
 
 - University of Westminster
