@@ -28,7 +28,3 @@ models/**/*.pkl
 # OS
 .DS_Store
 Thumbs.db
-
-# Result files
-*.csv
-*.png

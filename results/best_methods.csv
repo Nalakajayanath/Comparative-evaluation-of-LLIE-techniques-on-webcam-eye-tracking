@@ -1,0 +1,8 @@
+lighting,method,mean_error
+low_g,ssr,3.0938
+low_i,enlightengan,3.833
+low_i_g_left,ssr,7.1632
+low_i_g_right,enlightengan,6.9259
+low_left,he,2.6339
+low_right,enlightengan,3.2402
+normal,none,1.9266
